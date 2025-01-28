@@ -114,6 +114,8 @@ export class PostService {
                 } else {
                     return "Post não encontrado!";
                 }
+            } else {
+                return "Post não encontrado!";
             }
         } catch (error) {
             return { message: `Falha ao atualizar Post - ${error.message}` };
@@ -127,7 +129,7 @@ export class PostService {
                 await post.findByIdAndDelete(id);
                 return "Post excluído com sucesso!";
             } else {
-                return "Post não encontrada!";
+                return "Post não encontrado!";
             }
         } catch (error) {
             return { message: `Falha ao excluir Post - ${error.message}` };

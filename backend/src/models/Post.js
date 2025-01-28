@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
     required: true,
     enum: Object.values(TypeOfTasks), // Fazendo a validação com os valores do enum
   },
-  endDate: { type: Date },
+  endDate: { type: Date, required: true },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }], // Referência aos comentários
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date },
