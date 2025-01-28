@@ -26,7 +26,7 @@ export class PostService {
     };
 
     static async postCreate(req) {
-        const { title, description, discipline } = req.body
+        const { title, description, discipline, typeOfTasks, endDate } = req.body
         const authorization = req.headers.authorization
 
         if (authorization !== undefined) {
@@ -54,7 +54,9 @@ export class PostService {
                     title,
                     description,
                     author: user.name,
-                    discipline: existingDiscipline.title
+                    discipline: existingDiscipline.title,
+                    typeOfTasks,
+                    endDate
                 }
                 await post.create(newPost);
                 return {
@@ -71,7 +73,7 @@ export class PostService {
 
         try {
             const id = req.params.id;
-            const { title, description, discipline } = req.body
+            const { title, description, discipline, typeOfTasks, endDate } = req.body
             const authorization = req.headers.authorization
             const postSearch = await post.findById(id);
 
@@ -102,6 +104,8 @@ export class PostService {
                         description: description,
                         author: user.name,
                         discipline: existingDiscipline.title,
+                        typeOfTasks: typeOfTasks,
+                        endDate: endDate,
                         updatedAt: Date.now()
                     }
 

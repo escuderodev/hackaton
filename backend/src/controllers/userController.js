@@ -2,7 +2,6 @@ import { UserService } from "../services/userService.js";
 
 export class UserController {
     static async UserList(req, res) {
-        console.log("UserController");
         const result = await UserService.userList();
 
         if (Array.isArray(result)) {

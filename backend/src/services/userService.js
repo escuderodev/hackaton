@@ -4,9 +4,7 @@ import bcrypt from "bcrypt";
 
 export class UserService {
     static async userList() {
-        console.log("userService entrou!");
         try {
-            console.log("userService");
             return await user.find({});
         } catch (error) {
             return { message: `failed to get all users - ${error.message}` };
