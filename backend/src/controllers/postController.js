@@ -1,5 +1,6 @@
 import { PostService } from "../services/postService.js";
 
+
 export class PostController {
 
     static async postList(req, res) {

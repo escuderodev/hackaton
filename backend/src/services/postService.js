@@ -1,6 +1,7 @@
 import { post } from "../models/Post.js";
 import { UserService } from '../services/userService.js';
 import { DisciplineService } from '../services/disciplineService.js';
+import { sendEmailNotification } from "../services/emailService.js";
 
 export class PostService {
 
@@ -59,6 +60,8 @@ export class PostService {
                     endDate
                 }
                 await post.create(newPost);
+                await sendEmailNotification(newPost);
+
                 return {
                     message: "Post cadastrado com sucesso!",
                     post: newPost
@@ -110,6 +113,8 @@ export class PostService {
                     }
 
                     await post.findByIdAndUpdate(id, postUpdated);
+                    await sendEmailNotification(postUpdated);
+
                     return "Post atualizado com sucesso!";
                 } else {
                     return "Post não encontrado!";
